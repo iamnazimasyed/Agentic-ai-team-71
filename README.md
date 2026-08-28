@@ -1,139 +1,20 @@
-# CAMPUS-X
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-CAMPUS-X is a multi-agent emergency response and resource coordination system for campus incidents.
+# Run and deploy your AI Studio app
 
-## Phase 1: Project bootstrap
+This contains everything you need to run your app locally.
 
-This phase sets up the initial workspace, backend API skeleton, frontend dashboard shell, environment configuration, and project documentation.
+View your app in AI Studio: https://ai.studio/apps/cf68ac9e-e83a-449b-9ea6-e4e97e4229c3
 
-## Project structure
+## Run Locally
 
-```text
-campus-x/
-├── backend/
-│   ├── app/
-│   │   ├── app/
-│   │   ├── api/
-│   │   ├── models/
-│   │   ├── schemas/
-│   │   ├── services/
-│   │   ├── tools/
-│   │   ├── database/
-│   │   ├── graph/
-│   │   └── data/
-│   ├── tests/
-│   ├── .env.example
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── ...
-├── frontend/
-│   ├── src/
-│   ├── .env.example
-│   ├── package.json
-│   ├── vite.config.ts
-│   └── ...
-├── docs/
-│   ├── architecture.md
-│   ├── api.md
-│   └── demo-scenario.md
-├── .gitignore
-├── docker-compose.yml
-├── README.md
-└── .env.example
-```
+**Prerequisites:**  Node.js
 
-## Backend setup
 
-```bash
-cd campus-x/backend
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS/Linux
-# source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-## Frontend setup
-
-```bash
-cd campus-x/frontend
-npm install
-cp .env.example .env
-npm run dev -- --host 0.0.0.0
-```
-
-## Docker
-
-```bash
-cd campus-x
-docker compose up --build
-```
-
-## Expected result
-
-- Backend health endpoint: http://localhost:8000/health
-- Frontend application: http://localhost:5173
-- PostgreSQL service on port 5432
-
-## Testing
-
-```bash
-cd campus-x/backend
-python -m pytest
-
-cd campus-x/frontend
-npm run build
-```
-
-## Notes
-
-This is a starter scaffold for the full CAMPUS-X system. The next phases will build the incident models, AI agents, routing engine, human approval workflow, and dashboard functionality.
-
-## Phase 13: deployment and environment hardening
-
-This phase adds containerized deployment wiring, environment-aware configuration, health checks, and deployment documentation so the platform is closer to a production-ready local stack.
-
-## Deployment overview
-
-The project now supports a local dockerized stack with:
-
-- PostgreSQL for persistence
-- FastAPI backend
-- React frontend
-
-## Docker workflow
-
-```bash
-cd campus-x
-docker compose up --build
-```
-
-## Services
-
-- Frontend: http://localhost:5173
-- Backend: http://localhost:8000/health
-- PostgreSQL: localhost:5432
-
-## Environment files
-
-- Backend uses `.env` in `backend/` when present.
-- Frontend uses `.env` in `frontend/` when present.
-- Compose injects runtime variables directly for local orchestration.
-
-## Production notes
-
-- Prefer managed PostgreSQL in production instead of the local `postgres` container.
-- Keep secrets out of source control.
-- Use a reverse proxy or ingress layer for public traffic.
-- Pin versions for all runtime dependencies.
-
-## Monitoring and health checks
-
-The Compose stack includes health checks for PostgreSQL and the backend API route `/health`.
-
-## Related docs
-
-See `docs/deployment.md` for the environment and deployment guide.
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
